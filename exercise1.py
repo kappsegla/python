@@ -51,6 +51,7 @@ while True:
     guesses += 1
     if guess == secretNumber:
         print("You found it in", guesses, "guesses")
+        break
     elif guess < secretNumber:
         print("Too low")
     else:
