@@ -4,11 +4,17 @@ import random
 name = input("Enter your name: ")
 print("Hej",name)
 
+def sum(tal1,tal2):
+    return tal1 + tal2
+
+def prod(tal1,tal2):
+    return tal1 * tal2
+
 #2
 tal1 = int(input("Tal1: "))
 tal2 = int(input("Tal2: "))
-print("Summa:",tal1+tal2)
-print("Produkt:",tal1*tal2)
+print("Summa:",sum(tal1,tal2))
+print("Produkt:",prod(tal1,tal2))
 
 #3 From python 3 this will work as div by 2.0 For integer division use //
 print("Medelvärde: ", (tal1 + tal2) / 2)
@@ -49,10 +55,11 @@ guesses = 0
 while True:
     guess = int(input("Make a guess:"))
     guesses += 1
-    if guess == secretNumber:
-        print("You found it in", guesses, "guesses")
-        break
+    if guess > secretNumber:
+        print("Too high")
     elif guess < secretNumber:
         print("Too low")
     else:
-        print("Too high")
+        print("You found it in", guesses, "guesses")
+        break
+        
