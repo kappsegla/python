@@ -1,3 +1,6 @@
+from turtle import width
+
+
 x = 10
 y = 10.0
 b = True #False
@@ -11,15 +14,20 @@ points = [100,120]
 
 #Complex datatype
 class Student:
-    name = "Martin"
-    points = 100
+    def __init__(self, name, points = 0, active = True):
+        self.name = name
+        self.points = points
+        self.active = active
+
 
 #Create object in memory from class as a template
-student1 = Student()
-student2 = Student()
+student1 = Student("Martin", 100)
+student2 = Student("Kalle", 200, False)
+student4 = Student("Anna", active= False)
 
-print(student1.name)
-print(student1.points)
+print(student4.name)
+print(student4.points)
+print(student4.active)
 student1.name = "Kalle"
 student1.points = student1.points + 20
 print(student1.name)

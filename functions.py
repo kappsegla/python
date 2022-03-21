@@ -6,7 +6,7 @@ def my_function():
 def function_with_parameter(name):
     print("Your name is:", name)
 
-def second_function_with_parameters(username, greeting):
+def second_function_with_parameters(username, greeting="Hej"):
     print(greeting,username)
 
 def add(tal1, tal2):
@@ -15,5 +15,6 @@ def add(tal1, tal2):
 my_function()
 function_with_parameter("Martin")
 second_function_with_parameters("Martin","Hello")
+second_function_with_parameters("Martin")
 
 x = math.prod(2,3)
