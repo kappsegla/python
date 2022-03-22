@@ -19,15 +19,23 @@ class Student:
         self.points = points
         self.active = active
 
+    def __repr__(self) -> str:
+        return f"{self.name} {self.points} {self.active}"
+
+    def __str__(self) -> str:
+        return f"{self.name}:{self.points}:{self.active}"
 
 #Create object in memory from class as a template
 student1 = Student("Martin", 100)
 student2 = Student("Kalle", 200, False)
 student4 = Student("Anna", active= False)
 
+
 print(student4.name)
 print(student4.points)
 print(student4.active)
+print(student4)
+
 student1.name = "Kalle"
 student1.points = student1.points + 20
 print(student1.name)
