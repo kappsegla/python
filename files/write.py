@@ -1,3 +1,4 @@
+from operator import attrgetter
 import os
 import pathlib
 import re
@@ -58,8 +59,34 @@ def backuplogs():
                 os.mkdir(path/"logs")
             #shutil.copy(path/file, path/newfilename)
             if os.name == "posix":
-                os.system(f"cp {src} {dest}")
+                os.system(f"cp {src} {dest}")   #Unreachable warning in IDE when running on windows, but not an error
             elif os.name == "nt":
                 os.system(f"copy {src} {dest}")
 
-backuplogs()
+class FileInfo:
+    def __init__(self, filename, filesize) -> None:
+        self.filename = filename
+        self.filesize = filesize
+
+    def __str__(self) -> str:
+        return f"{self.filename} {self.filesize}"
+
+    def __lt__(self, other):
+        return self.filesize < other.filesize
+
+def filesizelist():
+    path = pathlib.Path.home()
+    filelist = os.listdir(path)
+    fileinfolist = []
+    for file in filelist:
+        if os.path.isfile(path/file):
+            fileinfo = FileInfo(file, os.path.getsize(path/file))
+            fileinfolist.append(fileinfo)
+            
+    fileinfolist.sort(key=attrgetter('filesize'), reverse=True)
+    #fileinfolist.sort()
+    for f in fileinfolist:
+        print(f)
+
+filesizelist()
+
