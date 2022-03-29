@@ -8,6 +8,7 @@ import re
 import getpass
 import pwd
 
+
 @dataclass(frozen=True)
 class Person:
     name : str
